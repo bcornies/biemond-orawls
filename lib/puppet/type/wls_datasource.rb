@@ -71,5 +71,14 @@ module Puppet
       /^((.*\/)?(.*)?)$/
     end
 
+    autorequire(:wls_cluster) {
+      if self[:targettype].length > 0 then
+          clustered_targets = []
+          self[:targettype].each_index { |i| clustered_targets << "#{domain}/#{self[:target][i]}" if self[:targettype][i] == 'Cluster' }
+      end
+      puts "Bryan: #{clustered_targets}"
+      clustered_targets
+    }
+
   end
 end

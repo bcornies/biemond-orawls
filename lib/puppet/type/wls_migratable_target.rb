@@ -46,5 +46,7 @@ module Puppet
     add_title_attributes(:migratable_target_name) do
       /^((.*\/)?(.*))$/
     end
+
+    autorequire(:wls_cluster)  { "#{domain}/#{cluster}"  }
   end
 end

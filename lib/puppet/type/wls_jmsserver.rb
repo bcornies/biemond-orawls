@@ -50,5 +50,17 @@ module Puppet
       /^((.*\/)?(.*)?)$/
     end
 
+    autorequire(:wls_migratable_target) {
+      if self[:targettype].length > 0 then
+          migratable_targets = []
+          self[:targettype].each_index { |i| migratable_targets << "#{domain}/#{self[:target][i]}" if self[:targettype][i] == 'MigratableTarget' }
+      end
+      migratable_targets
+    }
+
+    autorequire(:wls_jdbc_persistence_store) { "#{domain}/#{persistentstore}" if persistentstoretype == 'JDBCStore' }
+
+    autorequire(:wls_file_persistence_store) { "#{domain}/#{persistentstore}" if persistentstoretype == 'FileStore' }
+
   end
 end

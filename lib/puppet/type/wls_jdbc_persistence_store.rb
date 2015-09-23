@@ -48,5 +48,12 @@ module Puppet
       /^((.*\/)?(.*)?)$/
     end
 
+    #
+    # Manage auto requires
+    #
+    autorequire(:wls_datasource)  { "#{domain}/#{datasource}" }
+
+    autorequire(:wls_migratable_target) { "#{domain}/#{target}" if targettype == 'MigratableTarget' }
+
   end
 end
