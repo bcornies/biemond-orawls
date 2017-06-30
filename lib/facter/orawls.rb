@@ -848,3 +848,13 @@ Facter.add('ora_inst_products') do
     oraProducts
   end
 end
+
+Facter.add(:is_custom_trust_set) do
+  setcode do
+    if File.exists?("/etc/wls_customtrust.txt")
+       'true'
+    else
+       'false'
+    end
+  end
+end
