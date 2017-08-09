@@ -1,5 +1,13 @@
 # History
 
+## 1.0.50_p2
+- Exposing PinnedToThread in datasource. Exposing Cluster Overload settings. Customer Trust configuration in server and nodemanager
+- Changes for OE/OM configuration for Java7u99.  They are using keystore type defined for node manager for non JKS keystore types
+- fixing issues with key store type.  Had extra single quote causing issue in build
+
+## 1.0.50_p1
+- Fix memory leak when querying for JMS security policies
+
 ## 1.0.50
 - weblogic_type define which support multiple middleware homes on same vm
 - fmwcluster supports now not secure nodemanagers for wls server control
