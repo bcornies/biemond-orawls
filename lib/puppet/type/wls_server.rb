@@ -43,12 +43,14 @@ module Puppet
     parameter :custom_identity_keystore_passphrase
     parameter :custom_identity_privatekey_passphrase
     parameter :trust_keystore_passphrase
+    parameter :trust_keystore_type
     parameter :timeout
 
     property :tunnelingenabled
 
     property :trust_keystore_file
     property :custom_identity_keystore_filename
+    property :custom_identity_keystore_type
     property :custom_identity_alias
 
     property :ssllistenport
