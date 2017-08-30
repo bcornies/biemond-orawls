@@ -1,5 +1,8 @@
 # History
 
+## next
+- Rename modified types to fix environment leakage issue
+
 ## 1.0.50_p2
 - Exposing PinnedToThread in datasource. Exposing Cluster Overload settings. Customer Trust configuration in server and nodemanager
 - Changes for OE/OM configuration for Java7u99.  They are using keystore type defined for node manager for non JKS keystore types

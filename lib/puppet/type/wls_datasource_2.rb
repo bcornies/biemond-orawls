@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../../orawls_core'
 
 module Puppet
   #
-  Type.newtype(:wls_datasource) do
+  Type.newtype(:wls_datasource_2) do
     include EasyType
     include Utils::WlsAccess
     extend Utils::TitleParser
@@ -16,25 +16,25 @@ module Puppet
 
     to_get_raw_resources do
       Puppet.info "index #{name}"
-      environment = { 'action' => 'index', 'type' => 'wls_datasource' }
-      wlst template('puppet:///modules/orawls/providers/wls_datasource/index.py.erb', binding), environment
+      environment = { 'action' => 'index', 'type' => 'wls_datasource_2' }
+      wlst template('puppet:///modules/orawls/providers/wls_datasource_2/index.py.erb', binding), environment
     end
 
     on_create  do | command_builder |
       wlst_action = 'create'
       Puppet.info "create #{name} "
-      template('puppet:///modules/orawls/providers/wls_datasource/create.py.erb', binding)
+      template('puppet:///modules/orawls/providers/wls_datasource_2/create.py.erb', binding)
     end
 
     on_modify  do | command_builder |
       wlst_action = 'modify'
       Puppet.info "modify #{name} "
-      template('puppet:///modules/orawls/providers/wls_datasource/modify.py.erb', binding)
+      template('puppet:///modules/orawls/providers/wls_datasource_2/modify.py.erb', binding)
     end
 
     on_destroy  do | command_builder |
       Puppet.info "destroy #{name} "
-      template('puppet:///modules/orawls/providers/wls_datasource/destroy.py.erb', binding)
+      template('puppet:///modules/orawls/providers/wls_datasource_2/destroy.py.erb', binding)
     end
 
     parameter :domain

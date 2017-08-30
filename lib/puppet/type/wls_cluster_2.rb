@@ -2,7 +2,7 @@ require File.dirname(__FILE__) + '/../../orawls_core'
 
 module Puppet
   #
-  Type.newtype(:wls_cluster) do
+  Type.newtype(:wls_cluster_2) do
     include EasyType
     include Utils::WlsAccess
     extend Utils::TitleParser
@@ -16,10 +16,10 @@ module Puppet
 
     to_get_raw_resources do
       Puppet.info "index #{name}"
-      environment = { 'action' => 'index', 'type' => 'wls_cluster', 'rest_url' => '/management/weblogic/latest/domainConfig/clusters?links=none' }
+      environment = { 'action' => 'index', 'type' => 'wls_cluster_2', 'rest_url' => '/management/weblogic/latest/domainConfig/clusters?links=none' }
 
-      wlst template('puppet:///modules/orawls/providers/wls_cluster/index.py.erb', binding), environment
-      # result = controller template('puppet:///modules/orawls/providers/wls_cluster/index.py.erb', binding), environment
+      wlst template('puppet:///modules/orawls/providers/wls_cluster_2/index.py.erb', binding), environment
+      # result = controller template('puppet:///modules/orawls/providers/wls_cluster_2/index.py.erb', binding), environment
 
       # result.each do |item|
       #   item['clusteraddress'] = item.delete 'clusterAddress' unless item.has_key?('clusteraddress')
@@ -65,7 +65,7 @@ module Puppet
     on_create  do | command_builder |
       wlst_action = 'create'
       Puppet.info "create #{name} "
-      environment = { 'action' => 'create', 'type' => 'wls_cluster'}
+      environment = { 'action' => 'create', 'type' => 'wls_cluster_2'}
       # all_actions = Array.new
       # cluster_create = Hash.new
       # cluster_create['name'] = cluster_name
@@ -98,15 +98,15 @@ module Puppet
       # all_actions.push cluster_create_1
 
       # environment['attributes'] = all_actions
-      # controller template('puppet:///modules/orawls/providers/wls_cluster/create.py.erb', binding), environment
-      template('puppet:///modules/orawls/providers/wls_cluster/create_modify.py.erb', binding)
+      # controller template('puppet:///modules/orawls/providers/wls_cluster_2/create.py.erb', binding), environment
+      template('puppet:///modules/orawls/providers/wls_cluster_2/create_modify.py.erb', binding)
     end
 
     on_modify  do | command_builder |
       wlst_action = 'modify'
       Puppet.info "modify #{name} "
 
-      environment = { 'action' => 'modify', 'type' => 'wls_cluster'}
+      environment = { 'action' => 'modify', 'type' => 'wls_cluster_2'}
       # all_actions = Array.new
       # cluster_modify = Hash.new
       # cluster_modify['name'] = cluster_name
@@ -140,14 +140,14 @@ module Puppet
 
       # environment['attributes'] = all_actions
 
-      # controller template('puppet:///modules/orawls/providers/wls_cluster/modify.py.erb', binding), environment
-      template('puppet:///modules/orawls/providers/wls_cluster/create_modify.py.erb', binding)
+      # controller template('puppet:///modules/orawls/providers/wls_cluster_2/modify.py.erb', binding), environment
+      template('puppet:///modules/orawls/providers/wls_cluster_2/create_modify.py.erb', binding)
     end
 
     on_destroy  do | command_builder |
       Puppet.info "destroy #{name} "
 
-      environment = { 'action' => 'destroy', 'type' => 'wls_cluster'}
+      environment = { 'action' => 'destroy', 'type' => 'wls_cluster_2'}
       # all_actions = Array.new
       # cluster_create = Hash.new
       # cluster_create['name'] = cluster_name
@@ -163,8 +163,8 @@ module Puppet
 
       # environment['attributes'] = all_actions
 
-      # controller template('puppet:///modules/orawls/providers/wls_cluster/destroy.py.erb', binding), environment
-      template('puppet:///modules/orawls/providers/wls_cluster/destroy.py.erb', binding)
+      # controller template('puppet:///modules/orawls/providers/wls_cluster_2/destroy.py.erb', binding), environment
+      template('puppet:///modules/orawls/providers/wls_cluster_2/destroy.py.erb', binding)
     end
 
     parameter :domain
